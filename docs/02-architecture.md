@@ -34,7 +34,6 @@ flowchart TD
     CHAIN --> CONTRACTS[Test Smart Contracts]
     CHAIN --> LOGS[Local Logs and Monitoring]
 
-
 During the first local proof of concept:
 
 * one machine may operate the validator
