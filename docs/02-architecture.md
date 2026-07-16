@@ -33,13 +33,13 @@ flowchart TD
     CHAIN --> TX[TAMAYA Transfers]
     CHAIN --> CONTRACTS[Test Smart Contracts]
     CHAIN --> LOGS[Local Logs and Monitoring]
+```
 
 During the first local proof of concept:
 
-* one machine may operate the validator
-* the validator's RPC may be used temporarily
-* the network is available only while the local validator is running
-* no public infrastructure or real assets are involved
+- one machine may operate the validator
+- the validator RPC may be used temporarily
+- no public infrastructure or real assets are involved
 
 ## Planned Fuji Testnet Architecture
 
