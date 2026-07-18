@@ -1,0 +1,71 @@
+# Amaya Local Alpha — network specification
+#
+# This is a declarative PROJECT specification for Amaya L1 Local Alpha.
+# It is NOT an Avalanche-generated genesis file and MUST NOT be treated as one.
+#
+# Actual Blockchain ID, Subnet/L1 ID, EVM Chain ID, Amaya L1 RPC URL,
+# L1 validator NodeID, and genesis values are recorded ONLY after deliberate
+# creation and deployment with explicit human approval. Leave those fields
+# empty or unset until then.
+#
+# Never hard-code port 9650 (or any fixed port) as the Amaya L1 RPC.
+# Discover the Amaya L1 RPC URL from successful deployment output.
+#
+# TAMAYA is a valueless testnet asset used only for gas and network testing.
+
+project: amaya-l1
+display_name: Amaya Local Alpha
+environment: local-alpha
+
+# Permissioned Avalanche L1 using Subnet-EVM.
+permissioned: true
+virtual_machine: subnet-evm
+
+# Initial consensus direction for Local Alpha and early testnet.
+# Final production parameters remain subject to ADR revisit conditions.
+consensus_direction: proof-of-authority
+
+# Local Alpha: exactly one sovereign Amaya L1 validator.
+# Avalanche CLI may also start supporting Primary Network nodes; those are
+# NOT additional Amaya L1 validators.
+validator_count: 1
+validator_scope: amaya-l1
+supporting_primary_network_nodes: cli-managed
+
+# Amaya L1 RPC is the L1 validator node's RPC, discovered after deployment.
+# Current Avalanche CLI local deployments commonly place supporting Primary
+# Network nodes on ports such as 9650/9652 and assign the Amaya L1 validator
+# a dynamic localhost port. Port layout is an implementation detail and may
+# change between Avalanche CLI versions.
+rpc_url_assignment: discovered-at-deployment
+rpc_host_scope: localhost-only
+rpc_port: dynamic
+
+native_asset:
+  symbol: TAMAYA
+  # Explicit: no monetary value. Gas and network testing only.
+  monetary_value: none
+  purpose: gas-and-network-testing
+
+# Early-network policy (see ADR-004).
+# Presence of Avalanche interoperability tooling in a default local test
+# configuration does NOT authorize bridges for Amaya L1.
+bridges_enabled: false
+public_faucet_enabled: false
+
+# This repository must never hold production credentials.
+production_credentials_allowed: false
+
+# ---------------------------------------------------------------------------
+# Post-deployment fields (record after approved create/deploy — do not invent)
+# ---------------------------------------------------------------------------
+# deployment_timestamp: ""   # UTC timestamp of successful deploy
+# subnet_l1_id: ""           # Subnet / L1 ID after deployment
+# blockchain_id: ""          # Avalanche blockchain ID after deployment
+# evm_chain_id: null         # EVM chain ID after configuration
+# rpc_url: ""                # Amaya L1 RPC URL from deployment output (localhost)
+# validator_node_id: ""      # Amaya L1 validator NodeID (not Primary Network nodes)
+# genesis_reference: ""      # Pointer to offline/controlled genesis evidence
+# deployment_record: ""      # Link/path under deployments/local-alpha/ (no secrets)
+#
+# Until those values exist, treat this file as intent-only specification.

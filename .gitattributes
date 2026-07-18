@@ -1,0 +1,12 @@
+# Amaya L1 — normalize text; keep scripts executable when checked out
+* text=auto eol=lf
+
+*.sh text eol=lf
+*.md text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.mdc text eol=lf
+Makefile text eol=lf
+
+# Preserve executable bit for operator scripts when supported
+scripts/*.sh text eol=lf

@@ -1,0 +1,118 @@
+# Amaya L1 .gitignore — keep secrets and node state out of Git
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Cursor / editor local state
+.cursor/*
+!.cursor/rules/
+!.cursor/rules/**
+*.swp
+*.swo
+*~
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Environment files (keep only .env.example)
+.env
+.env.*
+!.env.example
+
+# Logs and temporary files
+*.log
+logs/
+tmp/
+temp/
+*.tmp
+*.temp
+*.bak
+*.orig
+
+# Build / dependency directories (future tooling)
+build/
+dist/
+out/
+bin/
+node_modules/
+vendor/
+.target/
+target/
+
+# AvalancheGo / node state (never commit)
+*avalanchego*
+*.db
+*.ldb
+chainData/
+db/
+database/
+node-state/
+network-state/
+
+# Staking, TLS, keystores, wallets
+staking/
+*staking*key*
+*tls*key*
+*.p12
+*.pfx
+*.jks
+*.keystore
+keystore/
+keystores/
+wallet/
+wallets/
+*.wallet
+
+# Mnemonics, seeds, private keys, certificates
+*mnemonic*
+*seed*phrase*
+*.seed
+*.pem
+*.key
+*.crt
+*.cer
+id_rsa
+id_rsa.*
+id_ecdsa
+id_ed25519
+*.priv
+
+# Cloud credentials / Terraform state
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+crash.log
+crash.*.log
+*.tfvars
+!*.tfvars.example
+.aws/
+.azure/
+.gcp/
+credentials.json
+service-account*.json
+
+# Deployment secrets and local overrides
+secrets/
+*.secret
+*credential*
+deployments/**/*.key
+deployments/**/*.pem
+deployments/**/keystore*
+config/**/*.key
+config/**/*.pem
+
+# Avalanche CLI local material (never copy into repo; ignore if present)
+.avalanche-cli/
+**/genesis-private*
+**/signer*

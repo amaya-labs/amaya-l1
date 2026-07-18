@@ -1,0 +1,53 @@
+---
+description: Amaya L1 infrastructure repository rules — permissioned Avalanche L1, Local Alpha safety, no secrets
+alwaysApply: true
+---
+
+# Amaya L1 repository rules
+
+You are working in **amaya-l1**, the production-grade infrastructure repository for **Amaya L1** (*Infrastructure for a Moving World*).
+
+## Quality bar
+
+- Produce production-ready documentation, config, and scripts.
+- Do not take insecure shortcuts or leave temporary insecure implementations.
+- Prefer precise, operational language over vague placeholders.
+
+## Hard boundaries
+
+- **Never** modify sibling repositories (including `moveplus_mainapp_web3`).
+- **Never** reveal, request, or embed wallet recovery phrases, private keys, validator staking keys, keystores, or production credentials.
+- **Never** copy material from `~/.avalanche-cli` into this repository.
+- **Never** place secrets in Git, screenshots guidance that includes secrets, or committed `.env` files.
+- Scripts added for routine operator checks must remain **read-only and non-destructive** unless the user explicitly expands scope after review.
+
+## Ask before proceeding
+
+Obtain explicit user approval before:
+
+- Destructive commands (`rm -rf`, disk wipes, force pushes, etc.)
+- `avalanche blockchain create`
+- `avalanche blockchain deploy`
+- `avalanche network clean` or equivalent resets
+- Validator set changes
+- `sudo`, brew installs, Docker deployments
+- Wallet import/export
+- Git commit (unless the user asked), Git push, or creating a GitHub remote
+
+## Environment isolation
+
+- Keep **local-alpha**, **fuji**, and **mainnet** configurations and evidence isolated.
+- Do not promote Local Alpha identities into Fuji/mainnet validator, treasury, or deployer roles.
+- Document migrations, rollback procedures, verification steps, and security impact for deployment-affecting changes.
+
+## Network and asset policy
+
+- Amaya L1 is a **permissioned** Avalanche L1 using **Subnet-EVM**.
+- Preserve the permissioned-network policy; do not introduce public unrestricted validator or token-launch platforms.
+- **TAMAYA** is a valueless testnet asset used only for gas and network testing — no sale, investment, or speculative language.
+- **No early bridges** and no unrestricted third-party fungible-token platforms in early testnet scope.
+- Non-goals include exchange/lending/remittance/public financial services, Project Agilus, and real government affiliation/records/funds.
+
+## Role separation
+
+Maintain separation among: validator/node identity, network deployer/admin, treasury, Move+ sponsored-gas relayer, OneTap sponsored-gas relayer, monitoring, and cloud infrastructure access. A development wallet must never become production treasury or validator identity.
