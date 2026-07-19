@@ -1,33 +1,52 @@
-# Amaya L1 security policy
+# Security Policy
 
 **TAMAYA is a valueless testnet asset used only for gas and network testing.**
 
-## No secrets in Git
+## Reporting a Vulnerability
 
-Never commit:
+Do not open a public GitHub issue for security vulnerabilities.
 
-- Wallet private keys or recovery phrases / mnemonics / seeds
-- Validator staking keys or node TLS private keys
-- Keystores, PEM private keys, certificates with private keys
-- API keys, cloud credentials, Terraform state with secrets
-- Production passwords, auth tokens, or `.env` files with credentials
+Report vulnerabilities privately through the official Amaya Labs GitHub organization or the published Amaya L1 security contact once available.
 
-Allowed: public identifiers (Blockchain ID, Subnet/L1 ID, EVM Chain ID, Amaya L1 RPC URL without embedded secrets, L1 validator NodeID, component versions, deployment timestamps) and declarative non-secret specs under `config/`.
+Please include:
+
+- A clear description of the issue
+- Affected component or file
+- Steps to reproduce
+- Possible security impact
+- Suggested mitigation, when available
+
+Do not exploit the issue, access data that does not belong to you, or publicly disclose the vulnerability before it has been reviewed.
+
+Reports should confirm that no real user funds or private data were accessed. Never include recovery phrases, private keys, or credentials in tickets.
+
+## Secret Handling
+
+Never commit or upload:
+
+- Seed phrases / recovery phrases / mnemonics
+- Wallet private keys (including public development-key private material)
+- Validator identity or signing keys
+- `staker.key` / `staker.crt` / `signer.key`
+- Wallet keystores or wallet-export output
+- Real `.env` files
+- SSH private keys
+- Cloud-provider credentials
+- Server passwords
+- Treasury credentials
+- Multisig recovery material
+- Production RPC credentials
+- API keys or access tokens
+- TLS private keys and certificates with private keys
+- Terraform state containing secrets
+
+Use placeholder values inside public examples (see `.env.example`).
+
+Allowed in Git: public identifiers (Blockchain ID, Subnet/L1 ID, EVM Chain ID, Amaya L1 RPC URL without embedded secrets, L1 validator NodeID, component versions, deployment timestamps) and declarative non-secret specs under `config/`.
 
 If a secret is committed accidentally: rotate it immediately, treat it as compromised, and follow [docs/operations/incident-response.md](docs/operations/incident-response.md). History scrubbing still requires assuming exposure.
 
-## Local Alpha network exposure
-
-- Keep Local Alpha bound to **localhost** only.
-- Do not recommend or configure exposure via `0.0.0.0`.
-- Do not hard-code port **9650** as the Amaya L1 RPC; discover the URL from deployment output.
-- Do not record private keys, recovery phrases, public development-key private material, staking keys, or wallet-export output in deployment evidence.
-
-## No production keys on the development MacBook
-
-Local Alpha work uses disposable testing identities. Do not store production validator, treasury, or cloud-admin credentials on the development laptop used for Local Alpha experiments.
-
-## Role separation
+## Role Separation
 
 Keep these roles separate at all times:
 
@@ -43,24 +62,31 @@ A development wallet must never become the future production treasury or validat
 
 See [docs/operations/key-separation.md](docs/operations/key-separation.md).
 
-## Core development wallet
+## Local Alpha Network Exposure
 
-Any Core Wallet account used for Local Alpha is **testing-only**. It is not a production treasury, not a validator identity, and not a long-term relayer.
+- Keep Local Alpha bound to **localhost** only.
+- Do not recommend or configure exposure via `0.0.0.0`.
+- Do not hard-code port **9650** as the Amaya L1 RPC; discover the URL from deployment output.
+- Do not record private keys, recovery phrases, staking keys, or wallet-export output in deployment evidence.
+- Do not store production credentials on the development MacBook used for Local Alpha experiments.
+- Do not copy `~/.avalanche-cli` into this repository.
 
-## Offline backups
+Any Core Wallet account used for Local Alpha is **testing-only**.
 
-- Maintain offline, access-controlled backups for validator and production material when those environments exist.
-- Do not use this Git repository as a backup target for keys.
-- Do not copy `~/.avalanche-cli` into the repository.
+## Testnet Security Rules
 
-## Incident reporting and key compromise
+- Testnet keys must never be reused on mainnet.
+- No real funds should be placed on experimental infrastructure.
+- TAMAYA has no monetary value.
+- Public RPC endpoints must not expose administrative APIs.
+- Validator administration interfaces must remain private.
+- Validators, RPC nodes, relayers, deployers, and treasury wallets must use separate credentials.
+- Destructive commands require manual review before execution.
+- Important infrastructure changes should be recorded in operator evidence / changelog practice when available.
+- Validator stop, restart, backup, and recovery procedures must be tested and documented.
+- Early-testnet bridges remain disabled (local interop tooling defaults do not authorize Amaya L1 bridges).
 
-1. Do not paste secrets into issues, PRs, or chat.
-2. Isolate the affected role and rotate credentials.
-3. Follow [docs/operations/incident-response.md](docs/operations/incident-response.md).
-4. Report repository security concerns through the private operator channel; include only non-secret reproduction details.
-
-## Screenshots and screen sharing
+## Screenshots and Screen Sharing
 
 Do not capture or share screenshots that show:
 
@@ -69,7 +95,7 @@ Do not capture or share screenshots that show:
 - Keystore passwords or cloud console secrets
 - Funded production dashboards with live credentials visible
 
-## Approval gates
+## Approval Gates
 
 Ask a human before:
 
@@ -78,8 +104,28 @@ Ask a human before:
 - Destructive filesystem or network operations
 - Git push or publishing remotes (when not already approved)
 
-## Related documents
+## Production Security Principles
+
+Before any Amaya L1 mainnet launch:
+
+- Use isolated validators across separate machines or environments.
+- Use multisig control for validator management and treasury operations.
+- Use hardware wallets for critical governance signers.
+- Operate dedicated RPC nodes separately from validators.
+- Enable monitoring, alerts, backups, and incident-response procedures.
+- Complete independent smart-contract and infrastructure security reviews.
+- Avoid launching a public bridge until it has been separately audited and secured.
+
+## Supported Versions
+
+Amaya L1 is currently in research and proof-of-concept development.
+
+No production version is supported at this stage.
+
+## Related Documents
 
 - [README.md](README.md)
 - [CONTRIBUTING.md](CONTRIBUTING.md)
 - [docs/operations/local-alpha-runbook.md](docs/operations/local-alpha-runbook.md)
+- [docs/operations/incident-response.md](docs/operations/incident-response.md)
+- [docs/07-security-model.md](docs/07-security-model.md)

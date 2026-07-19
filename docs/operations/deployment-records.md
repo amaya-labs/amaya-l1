@@ -29,6 +29,10 @@ For Local Alpha, also note (non-secret): CLI-managed supporting Primary Network 
 
 ## What never to record in this repository
 
+This GitHub repository is **public**. Do not place real operational deployment evidence here.
+
+Never record:
+
 - Private keys (including public development-key private material)
 - Recovery phrases / mnemonics / seeds
 - Wallet-export output
@@ -37,8 +41,19 @@ For Local Alpha, also note (non-secret): CLI-managed supporting Primary Network 
 - Keystores
 - Cloud credentials and API keys
 - Production passwords or auth tokens
+- Private validator IP inventories
+- SSH usernames, hosts, or access instructions
+- Cloud account, project, tenant, subscription, or instance identifiers
+- Monitoring tokens, webhook URLs, alert destinations, or dashboard credentials
+- Backup locations or private storage paths
+- Firewall, VPN, bastion, or private-network details
+- Internal-only or authenticated RPC credentials
 - Screenshots containing any of the above
 - Copies of `~/.avalanche-cli` contents
+
+**Real operational deployment records** (IPs, SSH, cloud IDs, monitoring, backups, firewall posture) must be stored in a **separate private operations repository**, not in `amaya-labs/amaya-l1`.
+
+Public-safe Local Alpha evidence in this repository is limited to non-secret identifiers and pass/fail verification notes from the template below.
 
 ## Directory convention
 

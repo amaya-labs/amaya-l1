@@ -1,4 +1,6 @@
-# Amaya L1 .gitignore — keep secrets and node state out of Git
+# Amaya L1 .gitignore — union of public repo + infrastructure foundation
+# Keep secrets and node state out of Git.
+# Do not ignore public documentation or non-secret declarative network specs.
 
 # macOS
 .DS_Store
@@ -63,6 +65,9 @@ network-state/
 staking/
 *staking*key*
 *tls*key*
+staker.key
+staker.crt
+signer.key
 *.p12
 *.pfx
 *.jks
@@ -116,3 +121,6 @@ config/**/*.pem
 .avalanche-cli/
 **/genesis-private*
 **/signer*
+
+# Local merge helper artifacts (if any)
+.merge-*
