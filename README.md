@@ -219,18 +219,19 @@ Environments stay isolated (`config/local-alpha`, `config/fuji`, `config/mainnet
 
 ### Local Alpha Success Criteria
 
-- [ ] Repository preflight and validation pass (or documented warnings)
-- [ ] One Amaya L1 validator starts successfully (**approval required** for create/deploy)
-- [ ] Amaya L1 RPC URL is discovered from deployment output (not assumed as port 9650)
-- [ ] The Amaya L1 RPC responds on localhost
-- [ ] A wallet connects to the correct chain
-- [ ] The expected TAMAYA allocation is visible
-- [ ] A TAMAYA transfer confirms
-- [ ] The transaction receipt can be retrieved
-- [ ] The validator can stop and restart
-- [ ] Chain state remains available after restart
-- [ ] No validator or wallet secrets are committed
-- [ ] Deployment evidence is recorded (public identifiers only)
+- [x] Repository preflight and validation pass (documented warnings acceptable for optional components)
+- [x] Avalanche CLI configuration verified for Local Alpha
+- [x] One sovereign Amaya L1 validator deployed locally
+- [x] Amaya L1 RPC URL discovered from deployment output (not assumed as port 9650)
+- [x] The Amaya L1 RPC responds on localhost
+- [x] Core wallet detects the correct network
+- [x] Native TAMAYA balance is visible
+- [x] Terminal-to-Core TAMAYA transfer confirmed
+- [x] Core-to-local TAMAYA transfer confirmed
+- [x] The validator can stop and restart in a controlled test
+- [x] Chain state remains available after restart
+- [x] Deployment evidence is recorded (public identifiers only)
+- [x] Sanitized public verification record published
 - [ ] Every verified command is documented
 
 ### Safe local preflight
@@ -245,6 +246,11 @@ make status       # Git status + Avalanche CLI version (non-secret)
 ```
 
 See [docs/operations/local-alpha-runbook.md](docs/operations/local-alpha-runbook.md). Creation and deployment remain **approval required**.
+
+Verified Local Alpha evidence:
+
+- [Public verification report](docs/operations/local-alpha-verification-2026-07-20.md)
+- [Public-safe YAML summary](deployments/local-alpha/2026-07-20-summary.yaml)
 
 ---
 
@@ -606,6 +612,7 @@ Amaya L1 currently has:
 - partner-onboarding framework
 - technical paper draft
 - Local Alpha preparation
+- Local Alpha verification record
 
 Amaya L1 does not currently have:
 

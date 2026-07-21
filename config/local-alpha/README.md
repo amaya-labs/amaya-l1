@@ -42,6 +42,15 @@ After an **approved** create/deploy:
 2. Store operational evidence per [docs/operations/deployment-records.md](../../docs/operations/deployment-records.md).
 3. Place non-secret deployment artifacts under `deployments/local-alpha/` only.
 
+## Verified Local Alpha Deployment
+
+The current public-safe verification artifacts for Amaya Local Alpha are:
+
+- [Markdown verification report](../../docs/operations/local-alpha-verification-2026-07-20.md)
+- [YAML deployment summary](../../deployments/local-alpha/2026-07-20-summary.yaml)
+
+These files intentionally contain only sanitized public identifiers, localhost RPC information, version data, and verification outcomes. Generated Avalanche CLI state, node databases, keystores, staking/signing keys, and other sensitive material remain outside Git and are **not** represented by these public summaries.
+
 ## Related
 
 - [Local Alpha runbook](../../docs/operations/local-alpha-runbook.md)

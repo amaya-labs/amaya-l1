@@ -55,6 +55,8 @@ Never record:
 
 Public-safe Local Alpha evidence in this repository is limited to non-secret identifiers and pass/fail verification notes from the template below.
 
+The public repository stores **sanitized evidence only**. Real infrastructure inventories and operational records belong in the private `amaya-l1-ops` repository. Private keys and credentials must never be stored in either repository.
+
 ## Directory convention
 
 ```text
@@ -67,6 +69,13 @@ deployments/
 Use clear filenames such as `2026-07-18-local-alpha-evidence.md` when you add records. Prefer public identifiers and checklists over dumping CLI home directories.
 
 **Do not** copy contents of `~/.avalanche-cli` into this repository.
+
+## Public verification record index
+
+| Environment | Date | Artifact | Notes |
+|---|---|---|---|
+| Local Alpha | `2026-07-20` | [Verification report](./local-alpha-verification-2026-07-20.md) | Sanitized public narrative record |
+| Local Alpha | `2026-07-20` | [YAML summary](../../deployments/local-alpha/2026-07-20-summary.yaml) | Machine-readable public-safe summary |
 
 ## Evidence template (Local Alpha)
 
